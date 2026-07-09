@@ -337,8 +337,4 @@ scale propagates through the full BPTT chain automatically.
 
 ---
 
-## Related
 
-* `../` — Trainable Model (original procedural implementation)
-
----

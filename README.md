@@ -255,7 +255,7 @@ A successful run shows:
   b_y            (3, 1)       0.000002   0.000015   ✅
 
   TensorFlow : 93.0%   C++ : 93.0%   Δ = 0.00%
-  ✅  C++ is a verified drop-in replacement for TensorFlow LSTM.
+  C++ is a verified drop-in replacement for TensorFlow LSTM.
 ```
 
 ---

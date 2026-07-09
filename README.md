@@ -1,4 +1,4 @@
-# LSTM Sentiment Classifier — Modular Class-Based C++ Implementation
+# LSTM Sentiment Classifier - Modular Class-Based C++ Implementation
 
 A complete, **modular, class-based LSTM** implemented in **pure C++17**
 with zero ML library dependencies. Trains a 3-class sentiment classifier
@@ -15,7 +15,7 @@ identical results.
 
 | Feature     | Trainable Model (original)                     | Modular Class-Based Model (this)          |
 | ----------- | ---------------------------------------------- | ----------------------------------------- |
-| Code style  | Procedural — global variables + free functions | Object-oriented — one class per component |
+| Code style  | Procedural - global variables + free functions | Object-oriented - one class per component |
 | Weights     | Global `Mat` structs                           | Encapsulated inside each layer class      |
 | Reusability | Single-file monolithic                         | Each class can be reused independently    |
 | Testability | Hard to unit test                              | Each class can be tested in isolation     |
@@ -56,16 +56,16 @@ Input tokens
 
 | Class            | File                                                  | What it does                                          |
 | ---------------- | ----------------------------------------------------- | ----------------------------------------------------- |
-| `Config`         | `include/Config.h`                                    | Hyperparameters — single source of truth              |
+| `Config`         | `include/Config.h`                                    | Hyperparameters - single source of truth              |
 | `Matrix`         | `include/Matrix.h` / `src/Matrix.cpp`                 | Row-major matrix: matmul, transpose, axpy, binary I/O |
-| `Activations`    | `include/Activations.h` / `src/Activations.cpp`       | sigmoid, tanh, softmax — stateless free functions     |
+| `Activations`    | `include/Activations.h` / `src/Activations.cpp`       | sigmoid, tanh, softmax - stateless free functions     |
 | `EmbeddingLayer` | `include/EmbeddingLayer.h` / `src/EmbeddingLayer.cpp` | Token → float vector lookup + gradient accumulation   |
 | `LSTMCell`       | `include/LSTMCell.h` / `src/LSTMCell.cpp`             | Single time-step forward + backward (stateless)       |
 | `LSTMLayer`      | `include/LSTMLayer.h` / `src/LSTMLayer.cpp`           | Full sequence unrolling + BPTT, owns gate weights     |
 | `DenseLayer`     | `include/DenseLayer.h` / `src/DenseLayer.cpp`         | Linear → softmax + cross-entropy gradient             |
 | `DataLoader`     | `include/DataLoader.h` / `src/DataLoader.cpp`         | Binary file I/O for int32 and float32 arrays          |
 | `LSTMModel`      | `include/LSTMModel.h` / `src/LSTMModel.cpp`           | Top-level API: train, evaluate, predict, weight I/O   |
-| `main.cpp`       | `src/main.cpp`                                        | Entry point — wires everything together               |
+| `main.cpp`       | `src/main.cpp`                                        | Entry point - wires everything together               |
 
 ---
 
@@ -199,9 +199,9 @@ cd ..          # back to Modular Class Based Model/ root
 **Expected output:**
 
 ```text
-======================================================================
+
   C++ LSTM SENTIMENT TRAINER  (Modular Class-Based)
-======================================================================
+
 
 Config:
   vocab=100  seq_len=10  emb_dim=32  hidden=16  output=3
@@ -209,9 +209,9 @@ Config:
 
 [LSTMModel] Loading weights (init) from: lstm_weights
 
-================================================================
+
   INITIAL PREDICTIONS  (before training)
-================================================================
+
   Seq  1: Pred: NEUTRAL   [XX]  Conf: 0.3521  (GT: NEGATIVE)
   ...
 
@@ -220,9 +220,9 @@ Config:
   ...
   Epoch 30/30 | Loss: 0.2103 | Train: 0.9500 | Test: 0.9300 | 2.2s
 
-================================================================
+
   FINAL PREDICTIONS  (after training)
-================================================================
+
   Seq  1: Pred: NEGATIVE  [OK]  Conf: 0.9123  (GT: NEGATIVE)
   ...
 
